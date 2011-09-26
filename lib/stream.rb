@@ -5,15 +5,18 @@ module CrunchPipe
   class Stream
     include Observable
 
+    attr_reader :default_action_block
+
     def initialize(&block)
       if block_given?
-        @block = block
+        @default_action_block = block
       end
     end
 
     def add(elements = [])
+      changed
       notify_observers(self, elements)
-      @block && elements.each {|element| @block.call element }
+      @default_action_block && elements.each {|element| @default_action_block.call element }
     end
   end
 end
