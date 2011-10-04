@@ -2,7 +2,7 @@ module CrunchPipe
   class Pipeline
     attr_accessor :parallel
     attr_reader :processors, :connections, :default_sink
-    
+
     def initialize(args, &block)
       @parallel = args[:parallel]
 
@@ -17,7 +17,7 @@ module CrunchPipe
       @processors = []
       @connections = {}
     end
-    
+
     def register(processor = nil, &block)
       if block_given?
         Pipeline.check_arity(block)
@@ -55,8 +55,8 @@ module CrunchPipe
 
     def process(element)
       result = element
-      @processors.each do |processor| 
-        result = processor.yield(result) 
+      @processors.each do |processor|
+        result = processor.yield(result)
       end
 
       result
