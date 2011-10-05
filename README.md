@@ -6,6 +6,36 @@ computation pipelines. Computation can take place in parallel and data
 sources are kept separate from the computation itself leading to
 modular and maintainable programs.
 
+The Basics
+----------
+
+CrunchPipe utilized computation pipelines connected to streams to
+model the processing of data.
+
+`/--------------\
+| Input Stream |
+\--------------/
+
+    ||
+    \/
+
+/----------\
+| Pipeline |
+|----------|
+| Op 1     |
+|----------|
+| Op 2     |
+|----------|
+| Op 3     |
+\----------/
+
+    ||
+    \/
+
+/---------------\
+| Output Stream |
+\---------------/
+`
 Streams
 ----------
 
@@ -19,7 +49,6 @@ abstract and general way.
 
 Pipelines
 ----------
-
 
 Pipelines represent computational processes. When a pipeline is
 created, you can bind an arbitrary number of transformations to it in
