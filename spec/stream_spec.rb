@@ -28,7 +28,7 @@ describe CrunchPipe::Stream do
   end
 
   describe '#add' do
-    let(:pipeline) { stub(CrunchPipe::Pipeline, :update => true) }
+    let(:pipeline) { CrunchPipe::Pipeline.new({}) {|a|} }
     let(:data) { [1,1,1,1] }
 
     it 'notifies observers' do
@@ -38,6 +38,12 @@ describe CrunchPipe::Stream do
       pipeline.should_receive(:update).exactly(1).times
 
       @stream.add data
+
+      # # Cheating makes it work...
+      # pipeline.update(@stream, data)
+
+      # # Strangely makes it happen twice.  But it doesn't get *any* calls if either call to notify_observers is removed...  wha?
+      # @stream.notify_observers(pipeline, data)
     end
   end
 end
