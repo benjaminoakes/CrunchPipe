@@ -12,30 +12,32 @@ The Basics
 CrunchPipe utilized computation pipelines connected to streams to
 model the processing of data.
 
-`/--------------\
-| Input Stream |
-\--------------/
 
-    ||
-    \/
+    
+    /--------------\
+    | Input Stream |
+    \--------------/
+    
+        ||
+        \/
+    
+    /----------\
+    | Pipeline |
+    |----------|
+    | Op 1     |
+    |----------|
+    | Op 2     |
+    |----------|
+    | Op 3     |
+    \----------/
+    
+        ||
+        \/
+    
+    /---------------\
+    | Output Stream |
+    \---------------/
 
-/----------\
-| Pipeline |
-|----------|
-| Op 1     |
-|----------|
-| Op 2     |
-|----------|
-| Op 3     |
-\----------/
-
-    ||
-    \/
-
-/---------------\
-| Output Stream |
-\---------------/
-`
 Streams
 ----------
 
